@@ -1,19 +1,33 @@
 #include "QuickSort.h"
 #include "SelectionSort.h"
 #include "Sort.h"
+
 #include <iostream>
+
+#define arraySize(array) sizeof(array) / sizeof(*array)
 
 using namespace std;
 
-enum SortingAlgorithms {
+struct AlgorithmType {
+    int index;
+    char name[32];
+};
+
+enum AlgorithmIndex {
     QUICK_SORT = 1,
     SELECTION_SORT,
 };
 
+const AlgorithmType kAlgorithms[] = {
+    {QUICK_SORT, "Quick Sort"},
+    {SELECTION_SORT, "Selection Sort"},
+};
+
 void SelectSortingAlgorithm(Sort** sort) {
     int type;
-    cout << "1. Quick Sort\n2. Selection Sort"
-        "\nSelect a sorting algorithm: ";
+    for (int i = 0; i < arraySize(kAlgorithms); ++i)
+        cout << kAlgorithms[i].index << ". " << kAlgorithms[i].name << endl;
+    cout << "Select a sort algorthm: ";
     cin >> type;
     switch (type) {
     case QUICK_SORT:
