@@ -1,1 +1,1 @@
-g++ QuickSort.cpp Main.cpp -o Sort
+g++ QuickSort.cpp SelectionSort.cpp Main.cpp -o Sort

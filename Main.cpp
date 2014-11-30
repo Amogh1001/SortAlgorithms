@@ -1,4 +1,5 @@
 #include "QuickSort.h"
+#include "SelectionSort.h"
 #include "Sort.h"
 #include <iostream>
 
@@ -6,15 +7,20 @@ using namespace std;
 
 enum SortingAlgorithms {
     QUICK_SORT = 1,
+    SELECTION_SORT,
 };
 
 void SelectSortingAlgorithm(Sort** sort) {
     int type;
-    cout << "1. Quick Sort\nSelect a sorting algorithm: ";
+    cout << "1. Quick Sort\n2. Selection Sort"
+        "\nSelect a sorting algorithm: ";
     cin >> type;
     switch (type) {
     case QUICK_SORT:
         *sort = new QuickSort();
+        break;
+    case SELECTION_SORT:
+        *sort = new SelectionSort();
         break;
     default:
         cout << "\nInvalid input! Please select again" << endl;
