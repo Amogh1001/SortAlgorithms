@@ -1,0 +1,1 @@
+g++ QuickSort.cpp Main.cpp -o Sort
