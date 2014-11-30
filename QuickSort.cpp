@@ -14,7 +14,9 @@ void QuickSort::SortInternal(int* array, int start, int end) {
     int leftNumber = 0, rightNumber = size;
 
     for (int i = start; i <= end; ++i) {
-        if (array[i] < array[pivot])
+        if (i == pivot)
+            continue;
+        if (array[i] <= array[pivot])
             tempArray[leftNumber++] = array[i];
         else if (array[i] > array[pivot])
             tempArray[--rightNumber] = array[i];
