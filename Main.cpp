@@ -1,3 +1,4 @@
+#include "InsertionSort.h"
 #include "QuickSort.h"
 #include "SelectionSort.h"
 #include "Sort.h"
@@ -16,11 +17,13 @@ struct AlgorithmType {
 enum AlgorithmIndex {
     QUICK_SORT = 1,
     SELECTION_SORT,
+    INSERTION_SORT,
 };
 
 const AlgorithmType kAlgorithms[] = {
     {QUICK_SORT, "Quick Sort"},
     {SELECTION_SORT, "Selection Sort"},
+    {INSERTION_SORT, "Insertion Sort"},
 };
 
 void SelectSortingAlgorithm(Sort** sort) {
@@ -35,6 +38,9 @@ void SelectSortingAlgorithm(Sort** sort) {
         break;
     case SELECTION_SORT:
         *sort = new SelectionSort();
+        break;
+    case INSERTION_SORT:
+        *sort = new InsertionSort();
         break;
     default:
         cout << "\nInvalid input! Please select again" << endl;
