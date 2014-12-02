@@ -6,6 +6,7 @@
 #include "Sort.h"
 
 #include <iostream>
+#include <sys/time.h>
 
 #define arraySize(array) sizeof(array) / sizeof(*array)
 
@@ -78,9 +79,18 @@ int main() {
     for (int i = 0; i < size; ++i)
         cin >> array[i];
 
-    sort->SortInt(array, size);
+    struct timeval dummyTime, startTime, endTime;
+    gettimeofday(&dummyTime, NULL);
+    gettimeofday(&startTime, NULL);
+    {
+        sort->SortInt(array, size);
+    }
+    gettimeofday(&endTime, NULL);
+    int lag = startTime.tv_usec - dummyTime.tv_usec;
+    long timeTaken = endTime.tv_usec - startTime.tv_usec - lag;
 
-    cout << "\nSorted array is:" << endl;
+    cout << "\nArray sorted in:" << timeTaken << " micro secs." << endl;
     for (int i = 0; i < size; ++i)
-        cout << array[i] << endl;
+        cout << array[i] << " ";
+    cout << endl;
 }
