@@ -1,5 +1,6 @@
 #include "BubbleSort.h"
 #include "InsertionSort.h"
+#include "MergeSort.h"
 #include "QuickSort.h"
 #include "SelectionSort.h"
 #include "Sort.h"
@@ -20,6 +21,7 @@ enum AlgorithmIndex {
     SELECTION_SORT,
     INSERTION_SORT,
     BUBBLE_SORT,
+    MERGE_SORT,
 };
 
 const AlgorithmType kAlgorithms[] = {
@@ -27,6 +29,7 @@ const AlgorithmType kAlgorithms[] = {
     {SELECTION_SORT, "Selection Sort"},
     {INSERTION_SORT, "Insertion Sort"},
     {BUBBLE_SORT, "Bubble Sort"},
+    {MERGE_SORT, "Merge Sort"},
 };
 
 void SelectSortingAlgorithm(Sort** sort) {
@@ -47,6 +50,9 @@ void SelectSortingAlgorithm(Sort** sort) {
         break;
     case BUBBLE_SORT:
         *sort = new BubbleSort();
+        break;
+    case MERGE_SORT:
+        *sort = new MergeSort();
         break;
     default:
         cout << "\nInvalid input! Please select again" << endl;
