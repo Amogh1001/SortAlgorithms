@@ -1,28 +1,15 @@
 CC=g++
-EXEC=Sort
+IN_DIR=./src
+OUT_DIR=./output
+EXEC=$(OUT_DIR)/Sort
+CPP_FILES=$(wildcard $(IN_DIR)/*.cpp)
+OBJ_FILES=$(addprefix $(OUT_DIR)/obj/,$(notdir $(CPP_FILES:.cpp=.o)))
 
-all: Sort
+$(OUT_DIR)/Sort: $(OBJ_FILES)
+	$(CC) $^ -o $@
 
-Sort: Main.o BubbleSort.o InsertionSort.o MergeSort.o QuickSort.o SelectionSort.o
-	$(CC) Main.o BubbleSort.o InsertionSort.o MergeSort.o QuickSort.o SelectionSort.o -o $(EXEC)
-
-Main.o: Main.cpp
-	$(CC) -c Main.cpp
-
-BubbleSort.o: BubbleSort.cpp
-	$(CC) -c BubbleSort.cpp
-
-InsertionSort.o: InsertionSort.cpp
-	$(CC) -c InsertionSort.cpp
-
-MergeSort.o: MergeSort.cpp
-	$(CC) -c MergeSort.cpp
-
-QuickSort.o: QuickSort.cpp
-	$(CC) -c QuickSort.cpp
-
-SelectionSort.o: SelectionSort.cpp
-	$(CC) -c SelectionSort.cpp
+$(OUT_DIR)/obj/%.o: $(IN_DIR)/%.cpp
+	$(CC) -c $< -o $@
 
 clean:
-	rm *o Sort
+	rm $(OUT_DIR)/obj/* $(OUT_DIR)/Sort
