@@ -1,9 +1,10 @@
-#include "BubbleSort.h"
-#include "InsertionSort.h"
-#include "MergeSort.h"
-#include "QuickSort.h"
-#include "SelectionSort.h"
-#include "Sort.h"
+#include "../src/AlgorithmDetails.h"
+#include "../src/BubbleSort.h"
+#include "../src/InsertionSort.h"
+#include "../src/MergeSort.h"
+#include "../src/QuickSort.h"
+#include "../src/SelectionSort.h"
+#include "../src/Sort.h"
 
 #include <iostream>
 #include <sys/time.h>
@@ -11,27 +12,6 @@
 #define arraySize(array) sizeof(array) / sizeof(*array)
 
 using namespace std;
-
-struct AlgorithmType {
-    int index;
-    char name[32];
-};
-
-enum AlgorithmIndex {
-    QUICK_SORT = 1,
-    SELECTION_SORT,
-    INSERTION_SORT,
-    BUBBLE_SORT,
-    MERGE_SORT,
-};
-
-const AlgorithmType kAlgorithms[] = {
-    {QUICK_SORT, "Quick Sort"},
-    {SELECTION_SORT, "Selection Sort"},
-    {INSERTION_SORT, "Insertion Sort"},
-    {BUBBLE_SORT, "Bubble Sort"},
-    {MERGE_SORT, "Merge Sort"},
-};
 
 void SelectSortingAlgorithm(Sort** sort) {
     int type;
@@ -68,7 +48,7 @@ int main() {
     SelectSortingAlgorithm(&sort);
 
     int size;
-    cout << "\nEnter number of elements: ";
+    cout << "Enter number of elements: ";
     do {
         if (size < 0)
             cout << "Enter a valid number: ";
@@ -89,7 +69,8 @@ int main() {
     int lag = startTime.tv_usec - dummyTime.tv_usec;
     long timeTaken = endTime.tv_usec - startTime.tv_usec - lag;
 
-    cout << "\nArray sorted in:" << timeTaken << " micro secs." << endl;
+    cout << "=================================================="
+        "\nArray sorted in:" << timeTaken << " micro secs." << endl;
     for (int i = 0; i < size; ++i)
         cout << array[i] << " ";
     cout << endl;
