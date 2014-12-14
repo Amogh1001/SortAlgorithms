@@ -12,7 +12,7 @@ using namespace std;
 
 #define arraySize(array) sizeof(array) / sizeof(*array)
 
-const int kTestCaseSize = 32;
+const int kTestCaseSize = 16;
 
 const int kTestCases[][kTestCaseSize] = {
     {1},
@@ -20,9 +20,14 @@ const int kTestCases[][kTestCaseSize] = {
     {1, 3, 2},
     {1, 4, 3, 2},
     {1, 1, 1, 1, 1},
+    {-1, 0, 1, 2, -2},
     {1, 2, 3, 4, 5, 6},
+    {-1, -4, -56, 1, 0, -23},
+    {-2, 1, 3, -2, -3, -1, 2, 4},
+    {-1, -2, -3, -4, -5, -6, -7, -8},
+    {12, 23, 25, 11, -34, -23, -45, -56},
     {3, 4, 6, 1, 4, 7, 8, 3, 7, 12, 23, 46, 12, 11, 34},
-    {34, 12, 16, 15, 73, 73, 123, 57, 23, 65, 55, 88, 1212}
+    {34, 12, 16, 15, 73, 73, 123, 57, 23, 65, 55, 88, 1212},
 };
 
 bool IsSorted(int* array, int size) {
